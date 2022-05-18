@@ -6,6 +6,7 @@ import { Navbar } from '../components/Navbar'
 const Home: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <Navbar />
       Hello World
     </div>
   )
