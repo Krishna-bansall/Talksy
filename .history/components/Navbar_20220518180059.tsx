@@ -6,7 +6,7 @@ import logo from '../public/Images/logo.png'
 
 export const Navbar = () => {
   return (
-    <div className="px-16 py-8">
+    <div>
       <Link href="/">
         <Image className="cursor-pointer" src={logo} />
       </Link>
