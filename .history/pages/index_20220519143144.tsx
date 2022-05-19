@@ -11,11 +11,11 @@ const Home: NextPage = () => {
         <h1 className="ml-2 text-2xl font-bold">Welcome to Talksy!</h1>
       </div>
       <div className="my-4 flex justify-center ">
-        <p className="px-10 text-txtSecondary">
+        <h1 className="px-10 text-txtSecondary">
           We’re working hard to get Talksy ready for everyone! While we wrap up
           the finishing youches, we’re adding people gradually to make sure
           nothing breaks :)
-        </p>
+        </h1>
       </div>
     </Card>
   )
