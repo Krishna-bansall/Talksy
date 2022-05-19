@@ -7,7 +7,6 @@ module.exports = {
     colors: {
       bgPrimary: '#121212',
       bgSecondary: '#1D1D1D',
-      txtPrimary: '#fff',
       txtSecondary: '#C4C5C5',
       blueCustom: '#0077FF',
       purpleCustom: '#5453E0',
