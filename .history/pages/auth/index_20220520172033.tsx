@@ -1,32 +1,32 @@
 import React, { useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { mailDo, phone, otp } from '../../redux/Auth/typeSlice'
+import { mail, phone } from '../../redux/Auth/typeSlice'
 import { RootState } from '../../redux/store'
 
 import PhonePage from '../../components/pages/PhonePage'
 import MailPage from '../../components/pages/MailPage'
 
 const Auth = () => {
-  const [text, setText] = useState<string>('')
-
   const type = useSelector((state: RootState) => state.type.value)
   const dispatch = useDispatch()
 
-  console.log(type)
+  const [selectedState, setSelectedState] = useState('phone')
+
+  console.log(selectedState)
   return (
     <>
-      {type === 'phone' ? (
+      {selectedState === 'phone' ? (
         <PhonePage
           setText={setText}
-          setSelectedState={dispatch}
-          selectedState={type}
+          setSelectedState={setSelectedState}
+          selectedState={selectedState}
         />
       ) : (
         <MailPage
           setText={setText}
-          setSelectedState={dispatch}
-          selectedState={type}
+          setSelectedState={setSelectedState}
+          selectedState={selectedState}
         />
       )}
     </>

@@ -10,7 +10,7 @@ import Input from '../Input'
 import mobile from '../../public/Images/emojis/mobile.svg'
 import mail from '../../public/Images/emojis/mail.svg'
 import { AppDispatch } from '../../redux/store'
-import { mailDo, otp, phone } from '../../redux/Auth/typeSlice'
+import { otp } from '../../redux/Auth/typeSlice'
 
 interface IProps {
   setText: React.Dispatch<React.SetStateAction<string>>
@@ -33,17 +33,11 @@ const MailPage: React.FC<IProps> = ({
         <div className="mr-2">
           <IconButtonVariant
             isSelected={selectedState}
-            setState={() => setSelectedState(phone())}
             type="phone"
             icon={mobile}
           />
         </div>
-        <IconButtonVariant
-          isSelected={selectedState}
-          icon={mail}
-          type="mail"
-          setState={() => setSelectedState(mailDo())}
-        />
+        <IconButtonVariant isSelected={selectedState} icon={mail} type="mail" />
       </div>
       <div className="w-full">
         <Card>
@@ -63,7 +57,6 @@ const MailPage: React.FC<IProps> = ({
           <div className="my-4 flex justify-center ">
             <IconButton
               buttonText="Next"
-              route="/auth/otp"
               icon={arrow}
               onClick={(e) => handleClick(e)}
             />

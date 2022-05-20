@@ -63,7 +63,6 @@ const MailPage: React.FC<IProps> = ({
           <div className="my-4 flex justify-center ">
             <IconButton
               buttonText="Next"
-              route="/auth/otp"
               icon={arrow}
               onClick={(e) => handleClick(e)}
             />

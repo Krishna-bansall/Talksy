@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { mailDo, phone, otp } from '../../redux/Auth/typeSlice'
+import { mail, phone, otp } from '../../redux/Auth/typeSlice'
 import { RootState } from '../../redux/store'
 
 import PhonePage from '../../components/pages/PhonePage'

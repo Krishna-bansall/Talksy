@@ -3,22 +3,20 @@ import { Card } from '../CardVariants'
 import Image from 'next/image'
 import IconButton, { IconButtonVariant } from '../../components/IconButton'
 
+import phoneEmoji from '../../public/Images/emojis/phoneEmoji.svg'
 import arrow from '../../public/Images/emojis/arrow.svg'
-import mailEmoji from '../../public/Images/emojis/mailEmoji.svg'
 import Input from '../Input'
-
 import mobile from '../../public/Images/emojis/mobile.svg'
 import mail from '../../public/Images/emojis/mail.svg'
 import { AppDispatch } from '../../redux/store'
 import { mailDo, otp, phone } from '../../redux/Auth/typeSlice'
-
 interface IProps {
   setText: React.Dispatch<React.SetStateAction<string>>
   setSelectedState: AppDispatch
   selectedState: string
 }
 
-const MailPage: React.FC<IProps> = ({
+const PhonePage: React.FC<IProps> = ({
   setText,
   setSelectedState,
   selectedState,
@@ -48,28 +46,28 @@ const MailPage: React.FC<IProps> = ({
       <div className="w-full">
         <Card>
           <div className="my-4 flex justify-center ">
-            <Image src={mailEmoji} />
+            <Image src={phoneEmoji} />
             <h1 className="ml-2 text-xl font-semibold md:text-2xl">
-              Enter Your Email id
+              Enter Your Phone Number!
             </h1>
           </div>
           <div className="my-4 flex justify-center ">
             <Input
-              type="email"
+              type="tel"
               onChange={(e) => setText(e.target.value)}
-              placeholder="mail@gmail.com"
+              placeholder="9711010110"
             />
           </div>
           <div className="my-4 flex justify-center ">
             <IconButton
               buttonText="Next"
-              route="/auth/otp"
               icon={arrow}
+              route="/auth"
               onClick={(e) => handleClick(e)}
             />
           </div>
           <p className="px-20 text-sm text-txtSecondary md:text-base">
-            By entering your mail, you're agreeing to our Terms of Service and
+            By entering your number, you're agreeing to our Terms of Service and
             Privacy Policy. Thanks!
           </p>
         </Card>
@@ -78,4 +76,4 @@ const MailPage: React.FC<IProps> = ({
   )
 }
 
-export default MailPage
+export default PhonePage
