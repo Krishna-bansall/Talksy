@@ -8,7 +8,7 @@ interface IBtnProps {
   icon?: any
   route?: string
   disabled?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+  onClick?: () => void
 }
 interface IVariantBtnProps {
   icon: any

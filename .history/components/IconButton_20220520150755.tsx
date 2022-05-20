@@ -8,7 +8,6 @@ interface IBtnProps {
   icon?: any
   route?: string
   disabled?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 interface IVariantBtnProps {
   icon: any
@@ -22,15 +21,9 @@ const IconButton: React.FC<IBtnProps> = ({
   icon,
   route,
   disabled,
-  onClick,
 }) => {
   return (
-    <button
-      disabled={disabled}
-      onClick={(e: React.MouseEvent<HTMLElement>) =>
-        onClick ? onClick(e) : undefined
-      }
-    >
+    <button disabled={disabled}>
       <Link href={`${route ? route : window.location.href}`}>
         <div
           className={`flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 

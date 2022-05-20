@@ -8,7 +8,6 @@ interface IBtnProps {
   icon?: any
   route?: string
   disabled?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 interface IVariantBtnProps {
   icon: any
@@ -22,16 +21,10 @@ const IconButton: React.FC<IBtnProps> = ({
   icon,
   route,
   disabled,
-  onClick,
 }) => {
   return (
-    <button
-      disabled={disabled}
-      onClick={(e: React.MouseEvent<HTMLElement>) =>
-        onClick ? onClick(e) : undefined
-      }
-    >
-      <Link href={`${route ? route : window.location.href}`}>
+    <Link href={`${route ? route : null}`}>
+      <button disabled={disabled}>
         <div
           className={`flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
         to-pinkCustom py-2 px-4 ${
@@ -41,8 +34,8 @@ const IconButton: React.FC<IBtnProps> = ({
           <h2 className="mr-2 text-lg">{buttonText}</h2>
           {icon ? <Image src={icon} /> : null}
         </div>
-      </Link>
-    </button>
+      </button>
+    </Link>
   )
 }
 

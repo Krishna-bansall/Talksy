@@ -8,7 +8,7 @@ interface IBtnProps {
   icon?: any
   route?: string
   disabled?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+  onClick?: () => void
 }
 interface IVariantBtnProps {
   icon: any
@@ -27,9 +27,7 @@ const IconButton: React.FC<IBtnProps> = ({
   return (
     <button
       disabled={disabled}
-      onClick={(e: React.MouseEvent<HTMLElement>) =>
-        onClick ? onClick(e) : undefined
-      }
+      onClick={() => (onClick ? onClick() : undefined)}
     >
       <Link href={`${route ? route : window.location.href}`}>
         <div
