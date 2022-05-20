@@ -82,8 +82,8 @@ const Auth = () => {
               <IconButton buttonText="Next" icon={arrow} route="/auth" />
             </div>
             <p className="text-md px-20 text-txtSecondary">
-              By entering your mail, you're agreeing to our Terms of Service and
-              Privacy Policy. Thanks!
+              By entering your number, you're agreeing to our Terms of Service
+              and Privacy Policy. Thanks!
             </p>
           </Card>
         </div>

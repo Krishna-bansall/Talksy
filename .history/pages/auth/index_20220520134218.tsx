@@ -68,7 +68,7 @@ const Auth = () => {
             <div className="my-4 flex justify-center ">
               <Image src={mailEmoji} />
               <h1 className="ml-2 text-2xl font-semibold">
-                Enter Your Email id
+                Enter Your Email Id!
               </h1>
             </div>
             <div className="my-4 flex justify-center ">
@@ -82,8 +82,8 @@ const Auth = () => {
               <IconButton buttonText="Next" icon={arrow} route="/auth" />
             </div>
             <p className="text-md px-20 text-txtSecondary">
-              By entering your mail, you're agreeing to our Terms of Service and
-              Privacy Policy. Thanks!
+              By entering your number, you're agreeing to our Terms of Service
+              and Privacy Policy. Thanks!
             </p>
           </Card>
         </div>
