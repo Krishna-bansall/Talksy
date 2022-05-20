@@ -27,9 +27,7 @@ const IconButton: React.FC<IBtnProps> = ({
       <button disabled={disabled}>
         <div
           className={`flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
-        to-pinkCustom py-2 px-4 ${
-          disabled ? 'cursor-not-allowed opacity-40' : null
-        }`}
+        to-pinkCustom py-2 px-4 ${disabled ? "opacity-40 cursor-not-allowed"}`}
         >
           <h2 className="mr-2 text-lg">{buttonText}</h2>
           {icon ? <Image src={icon} /> : null}

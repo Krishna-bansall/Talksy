@@ -7,7 +7,6 @@ interface IBtnProps {
   buttonText: string
   icon?: any
   route: string
-  disabled?: boolean
 }
 interface IVariantBtnProps {
   icon: any
@@ -16,20 +15,13 @@ interface IVariantBtnProps {
   setState: React.Dispatch<React.SetStateAction<string>>
 }
 
-const IconButton: React.FC<IBtnProps> = ({
-  buttonText,
-  icon,
-  route,
-  disabled,
-}) => {
+const IconButton: React.FC<IBtnProps> = ({ buttonText, icon, route }) => {
   return (
     <Link href={`${route}`}>
-      <button disabled={disabled}>
+      <button disabled>
         <div
-          className={`flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
-        to-pinkCustom py-2 px-4 ${
-          disabled ? 'cursor-not-allowed opacity-40' : null
-        }`}
+          className="flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
+        to-pinkCustom py-2 px-4 opacity-40"
         >
           <h2 className="mr-2 text-lg">{buttonText}</h2>
           {icon ? <Image src={icon} /> : null}

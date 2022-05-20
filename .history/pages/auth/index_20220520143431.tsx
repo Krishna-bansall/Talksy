@@ -8,7 +8,6 @@ import mobile from '../../public/Images/emojis/mobile.svg'
 import mail from '../../public/Images/emojis/mail.svg'
 
 import mailEmoji from '../../public/Images/emojis/mailEmoji.svg'
-import MailPage from '../../components/pages/MailPage'
 
 const Auth = () => {
   const [text, setText] = useState<string>('')
@@ -35,7 +34,30 @@ const Auth = () => {
       {selectedState === 'phone' ? (
         <PhonePage setText={setText} />
       ) : (
-        <MailPage setText={setText} />
+        <div className="w-full">
+          <Card>
+            <div className="my-4 flex justify-center ">
+              <Image src={mailEmoji} />
+              <h1 className="ml-2 text-xl font-semibold md:text-2xl">
+                Enter Your Email id
+              </h1>
+            </div>
+            <div className="my-4 flex justify-center ">
+              <Input
+                type="email"
+                onChange={(e) => setText(e.target.value)}
+                placeholder="mail@gmail.com"
+              />
+            </div>
+            <div className="my-4 flex justify-center ">
+              <IconButton buttonText="Next" icon={arrow} route="/auth" />
+            </div>
+            <p className="px-20 text-sm text-txtSecondary md:text-base">
+              By entering your mail, you're agreeing to our Terms of Service and
+              Privacy Policy. Thanks!
+            </p>
+          </Card>
+        </div>
       )}
     </div>
   )
