@@ -16,7 +16,7 @@ const Home: NextPage = () => {
           </h1>
         </div>
         <div className="my-4 flex justify-center ">
-          <p className="px-20 text-base text-txtSecondary md:text-lg">
+          <p className="px-20 text-lg text-txtSecondary">
             We're working hard to get Talksy ready for everyone! While we wrap
             up the finishing youches, we're adding people gradually to make sure
             nothing breaks :)

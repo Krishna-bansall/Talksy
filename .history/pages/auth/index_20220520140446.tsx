@@ -20,7 +20,7 @@ const Auth = () => {
   const [selectedState, setSelectedState] = useState('phone')
   console.log(text)
   return (
-    <div className="flex w-full flex-col md:w-1/2">
+    <div className="flex w-1/2 flex-col">
       <div className="mb-2 flex justify-end">
         <div className="mr-2">
           <IconButtonVariant
@@ -38,11 +38,11 @@ const Auth = () => {
         />
       </div>
       {selectedState === 'phone' ? (
-        <div className="w-full">
+        <div className="w-1/2">
           <Card>
             <div className="my-4 flex justify-center ">
               <Image src={phoneEmoji} />
-              <h1 className="ml-2 text-xl font-semibold md:text-2xl">
+              <h1 className="ml-2 text-2xl font-semibold">
                 Enter Your Phone Number!
               </h1>
             </div>
@@ -56,18 +56,18 @@ const Auth = () => {
             <div className="my-4 flex justify-center ">
               <IconButton buttonText="Next" icon={arrow} route="/auth" />
             </div>
-            <p className="px-20 text-sm text-txtSecondary md:text-base">
+            <p className="text-md px-20 text-txtSecondary">
               By entering your number, you're agreeing to our Terms of Service
               and Privacy Policy. Thanks!
             </p>
           </Card>
         </div>
       ) : (
-        <div className="w-full">
+        <div className="w-1/2">
           <Card>
             <div className="my-4 flex justify-center ">
               <Image src={mailEmoji} />
-              <h1 className="ml-2 text-xl font-semibold md:text-2xl">
+              <h1 className="ml-2 text-2xl font-semibold">
                 Enter Your Email id
               </h1>
             </div>
@@ -81,7 +81,7 @@ const Auth = () => {
             <div className="my-4 flex justify-center ">
               <IconButton buttonText="Next" icon={arrow} route="/auth" />
             </div>
-            <p className="px-20 text-sm text-txtSecondary md:text-base">
+            <p className="text-md px-20 text-txtSecondary">
               By entering your mail, you're agreeing to our Terms of Service and
               Privacy Policy. Thanks!
             </p>

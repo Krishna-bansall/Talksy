@@ -18,7 +18,7 @@ interface IVariantBtnProps {
 const IconButton: React.FC<IBtnProps> = ({ buttonText, icon, route }) => {
   return (
     <Link href={`${route}`}>
-      <button>
+      <Button>
         <div
           className="flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
         to-pinkCustom py-2 px-4"
@@ -26,7 +26,7 @@ const IconButton: React.FC<IBtnProps> = ({ buttonText, icon, route }) => {
           <h2 className="mr-2 text-lg">{buttonText}</h2>
           {icon ? <Image src={icon} /> : null}
         </div>
-      </button>
+      </Button>
     </Link>
   )
 }

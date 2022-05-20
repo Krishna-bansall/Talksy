@@ -56,7 +56,7 @@ const Auth = () => {
             <div className="my-4 flex justify-center ">
               <IconButton buttonText="Next" icon={arrow} route="/auth" />
             </div>
-            <p className="px-20 text-sm text-txtSecondary md:text-base">
+            <p className="text-md px-20 text-txtSecondary">
               By entering your number, you're agreeing to our Terms of Service
               and Privacy Policy. Thanks!
             </p>
@@ -81,7 +81,7 @@ const Auth = () => {
             <div className="my-4 flex justify-center ">
               <IconButton buttonText="Next" icon={arrow} route="/auth" />
             </div>
-            <p className="px-20 text-sm text-txtSecondary md:text-base">
+            <p className="text-md px-20 text-txtSecondary">
               By entering your mail, you're agreeing to our Terms of Service and
               Privacy Policy. Thanks!
             </p>

@@ -18,15 +18,13 @@ interface IVariantBtnProps {
 const IconButton: React.FC<IBtnProps> = ({ buttonText, icon, route }) => {
   return (
     <Link href={`${route}`}>
-      <button>
-        <div
-          className="flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
-        to-pinkCustom py-2 px-4"
-        >
-          <h2 className="mr-2 text-lg">{buttonText}</h2>
-          {icon ? <Image src={icon} /> : null}
-        </div>
-      </button>
+      <div
+        className="flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
+      to-pinkCustom py-2 px-4"
+      >
+        <h2 className="mr-2 text-lg">{buttonText}</h2>
+        {icon ? <Image src={icon} /> : null}
+      </div>
     </Link>
   )
 }

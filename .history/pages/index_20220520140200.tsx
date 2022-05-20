@@ -11,12 +11,10 @@ const Home: NextPage = () => {
       <Card>
         <div className="my-4 flex justify-center ">
           <Image src={wave} />
-          <h1 className="ml-2 text-xl font-light md:text-2xl">
-            Welcome to Talksy!
-          </h1>
+          <h1 className="ml-2 text-2xl font-light">Welcome to Talksy!</h1>
         </div>
         <div className="my-4 flex justify-center ">
-          <p className="px-20 text-base text-txtSecondary md:text-lg">
+          <p className="px-20 text-lg text-txtSecondary">
             We're working hard to get Talksy ready for everyone! While we wrap
             up the finishing youches, we're adding people gradually to make sure
             nothing breaks :)
