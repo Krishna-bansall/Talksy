@@ -46,12 +46,8 @@ const otp = () => {
               />
             </div>
             <p className="justify-center px-20 text-center text-sm text-txtSecondary md:text-base">
+              <Link link="/auth/otp" text="Resend Otp" />
               Do Not Refresh this Page
-              <LinkElement
-                link="/auth/otp"
-                text="Resend Otp"
-                // onClick={() => }
-              />
             </p>
           </Card>
         </div>

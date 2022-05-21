@@ -9,7 +9,7 @@ import Input from '../../components/Input'
 import lock from '../../public/Images/emojis/lock.svg'
 import arrow from '../../public/Images/emojis/arrow.svg'
 import { RootState } from '../../redux/store'
-import LinkElement from '../../components/LinkElement'
+import Link from '../../components/Link'
 
 const otp = () => {
   const type = useSelector((state: RootState) => state.type.value)
@@ -46,12 +46,8 @@ const otp = () => {
               />
             </div>
             <p className="justify-center px-20 text-center text-sm text-txtSecondary md:text-base">
+              <Link link="/auth/otp" text="Resend Otp" />
               Do Not Refresh this Page
-              <LinkElement
-                link="/auth/otp"
-                text="Resend Otp"
-                // onClick={() => }
-              />
             </p>
           </Card>
         </div>
