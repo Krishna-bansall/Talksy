@@ -10,6 +10,7 @@
 
 # history folders
 .history/
+.env
 
 # production
 /build
