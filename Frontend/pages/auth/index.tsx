@@ -19,12 +19,14 @@ const Auth = () => {
       {type === 'phone' ? (
         <PhonePage
           setText={setText}
+          text={text}
           setSelectedState={dispatch}
           selectedState={type}
         />
       ) : (
         <MailPage
           setText={setText}
+          text={text}
           setSelectedState={dispatch}
           selectedState={type}
         />

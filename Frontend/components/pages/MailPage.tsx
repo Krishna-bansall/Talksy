@@ -14,12 +14,14 @@ import { mailDo, otp, phone } from '../../redux/Auth/typeSlice'
 
 interface IProps {
   setText: React.Dispatch<React.SetStateAction<string>>
+  text: string
   setSelectedState: AppDispatch
   selectedState: string
 }
 
 const MailPage: React.FC<IProps> = ({
   setText,
+  text,
   setSelectedState,
   selectedState,
 }) => {

@@ -21,8 +21,8 @@ class AuthController {
 		}
 
 		try {
-			await otpService.sendBySms(phone, otp.toString());
-			res.json({ hash: `${hash}_${expires}`, phone });
+			// await otpService.sendBySms(phone, otp.toString());
+			res.json({ hash: `${hash}_${expires}`, phone, otp });
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ message: "Message Sending Failed" });

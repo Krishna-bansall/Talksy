@@ -2,6 +2,7 @@ import express from "express";
 import { router } from "./routes";
 import * as dotenv from "dotenv";
 import { DbConnect } from "./database";
+import cors from "cors";
 
 dotenv.config({
 	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
@@ -10,6 +11,11 @@ dotenv.config({
 const app = express();
 const PORT = process.env.PORT || 5500;
 DbConnect();
+
+const corsOption = {
+	origin: ["http://locahost/3000"],
+};
+app.use(cors(corsOption));
 
 app.use(express.json());
 app.use(router);
