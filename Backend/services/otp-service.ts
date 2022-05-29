@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import twilio from "twilio";
 import * as dotenv from "dotenv";
+import { hashService } from "./hash-service";
 
 dotenv.config({
 	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
@@ -23,6 +24,13 @@ class OtpService {
 			body: `Your Talksy Verification Code is ${otp}`,
 		});
 	}
-	verifyOtp() {}
+	verifyOtp(hashedOtp: string, data: string) {
+		let computedHash = hashService.hashOtp(data);
+		if (computedHash === hashedOtp) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 export const otpService = new OtpService();

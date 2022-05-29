@@ -1,6 +1,7 @@
 import express from "express";
 import { router } from "./routes";
 import * as dotenv from "dotenv";
+import { DbConnect } from "./database";
 
 dotenv.config({
 	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
@@ -8,6 +9,7 @@ dotenv.config({
 
 const app = express();
 const PORT = process.env.PORT || 5500;
+DbConnect();
 
 app.use(express.json());
 app.use(router);
