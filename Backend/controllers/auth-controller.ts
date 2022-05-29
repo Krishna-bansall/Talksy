@@ -2,6 +2,7 @@ import express from "express";
 import { otpService } from "../services/otp-service";
 import { hashService } from "../services/hash-service";
 import { userService } from "../services/user-service";
+import { tokenService } from "../services/token-service";
 
 class AuthController {
 	async sendOtp(req: express.Request, res: express.Response) {
@@ -38,6 +39,7 @@ class AuthController {
 		const [hashedOtp, expires] = (hash as string).split("_");
 		if (Date.now() > +expires) {
 			res.status(400).json({ message: "OTP has expired!" });
+			return;
 		}
 
 		const data = `${otp}.${phone}.${expires}`;
@@ -45,19 +47,33 @@ class AuthController {
 
 		if (!isValid) {
 			res.status(400).json({ message: "Invalid Otp" });
+			return;
 		}
 
-		let user: string;
-		let accessToken: string;
-		let refreshToken: string;
+		let user: any;
 		try {
 			user = await userService.findUser({ phone });
+			console.log(user);
 			if (!user) {
 				await userService.createUser({ phone });
 			}
 		} catch (error) {
 			console.log(error);
+			res.status(500).json({ message: "DB Error" });
 		}
+
+		// Token
+		const { accessToken, refreshToken } = tokenService.generateTokens({
+			_id: user._id,
+			activated: false,
+		});
+
+		res.cookie("refreshToken", refreshToken, {
+			maxAge: 1000 * 60 * 60 * 24 * 30,
+			httpOnly: true,
+		});
+
+		res.json({ accessToken });
 	}
 }
 

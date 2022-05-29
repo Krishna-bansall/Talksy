@@ -10,6 +10,6 @@ Content-Type: application/json
 
 {
     "phone": "+917303067935",
-    "otp": 850130,
-    "hash": "26414f588227f5a1c1dadb22c5e92402c8c8cb1d43b376ac6fc01c477858521a_1653718203997"
+    "otp": 610622,
+    "hash": "7ef1600b8b3feaffca4d66d1d40a693706dd9bf83092485766c6149f05e34e99_1653841866516"
 }
