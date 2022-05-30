@@ -12,13 +12,15 @@ const app = express();
 const PORT = process.env.PORT || 5500;
 DbConnect();
 
-const corsOption = {
-	origin: ["http://locahost/3000"],
-};
-app.use(cors(corsOption));
-
 app.use(express.json());
 app.use(router);
+
+const corsOption = {
+	origin: "http://localhost:3000/",
+	credentials: true, //access-control-allow-credentials:true
+	optionSuccessStatus: 200,
+};
+app.use(cors(corsOption));
 
 app.get("/", (req, res) => {
 	res.send("Hello From Express");

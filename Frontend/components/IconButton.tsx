@@ -2,6 +2,7 @@ import React from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 interface IBtnProps {
   buttonText: string
@@ -24,6 +25,7 @@ const IconButton: React.FC<IBtnProps> = ({
   disabled,
   onClick,
 }) => {
+  const router = useRouter()
   return (
     <button
       disabled={disabled}
@@ -31,7 +33,7 @@ const IconButton: React.FC<IBtnProps> = ({
         onClick ? onClick(e) : undefined
       }
     >
-      <Link href={`${route ? route : window.location.href}`}>
+      <Link href={`${route ? route : router.pathname}`}>
         <div
           className={`flex cursor-pointer rounded-3xl bg-gradient-to-br from-yellowCustom 
         to-pinkCustom py-2 px-4 ${

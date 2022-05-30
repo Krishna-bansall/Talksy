@@ -11,6 +11,9 @@ import mail from '../../public/Images/emojis/mail.svg'
 import { AppDispatch } from '../../redux/store'
 import { mailDo, otp, phone } from '../../redux/Auth/typeSlice'
 import { sendOtp } from '../../api'
+import { IApiData } from '../../pages/auth/index'
+import { useRouter } from 'next/router'
+
 interface IProps {
   setText: React.Dispatch<React.SetStateAction<string>>
   text: string
@@ -24,10 +27,16 @@ const PhonePage: React.FC<IProps> = ({
   setSelectedState,
   selectedState,
 }) => {
+  const router = useRouter()
+
   const handleClick = async (e: React.MouseEvent<HTMLElement>) => {
-    // setSelectedState(otp())
-    const res = await sendOtp(text)
+    const res = await sendOtp({ phone: text })
     console.log(res)
+
+    if (res.status === 200) {
+      setSelectedState(otp())
+      router.push('/auth/otp')
+    }
   }
 
   return (
@@ -68,7 +77,7 @@ const PhonePage: React.FC<IProps> = ({
               buttonText="Next"
               disabled={text.length < 10}
               icon={arrow}
-              route={selectedState === 'otp' ? '/auth/otp' : '/auth/'}
+              // route={selectedState === 'otp' ? '/auth/otp' : ''}
               onClick={(e) => handleClick(e)}
             />
           </div>
