@@ -23,11 +23,9 @@ class AuthController {
 		try {
 			// await otpService.sendBySms(phone, otp.toString());
 			res.json({ hash: `${hash}_${expires}`, phone, otp });
-			return;
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ message: "Message Sending Failed" });
-			return;
 		}
 
 		// res.json({ hash });
@@ -57,16 +55,19 @@ class AuthController {
 			user = await userService.findUser({ phone });
 			console.log(user);
 			if (!user) {
-				await userService.createUser({ phone });
+				user = await userService.createUser({ phone });
 			}
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ message: "DB Error" });
 		}
 
-		// Token
+		console.log(1);
+		console.log(user);
+		console.log(2);
+
 		const { accessToken, refreshToken } = tokenService.generateTokens({
-			_id: user._id,
+			_id: await user._id,
 			activated: false,
 		});
 

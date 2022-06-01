@@ -8,17 +8,19 @@ import arrow from '../../public/Images/emojis/arrow.svg'
 import Input from '../Input'
 import mobile from '../../public/Images/emojis/mobile.svg'
 import mail from '../../public/Images/emojis/mail.svg'
-import { AppDispatch } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 import { mailDo, otp, phone } from '../../redux/Auth/typeSlice'
 import { sendOtp } from '../../api'
-import { IApiData } from '../../pages/auth/index'
 import { useRouter } from 'next/router'
+import { setApiData } from '../../redux/Auth/authDataSlice'
+import { useSelector } from 'react-redux'
 
 interface IProps {
   setText: React.Dispatch<React.SetStateAction<string>>
   text: string
   setSelectedState: AppDispatch
   selectedState: string
+  authApiData: AppDispatch
 }
 
 const PhonePage: React.FC<IProps> = ({
@@ -26,6 +28,7 @@ const PhonePage: React.FC<IProps> = ({
   text,
   setSelectedState,
   selectedState,
+  authApiData,
 }) => {
   const router = useRouter()
 
@@ -35,6 +38,7 @@ const PhonePage: React.FC<IProps> = ({
 
     if (res.status === 200) {
       setSelectedState(otp())
+      authApiData(setApiData(res.data))
       router.push('/auth/otp')
     }
   }

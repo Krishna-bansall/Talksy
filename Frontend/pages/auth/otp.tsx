@@ -10,12 +10,18 @@ import lock from '../../public/Images/emojis/lock.svg'
 import arrow from '../../public/Images/emojis/arrow.svg'
 import { RootState } from '../../redux/store'
 import LinkElement from '../../components/LinkElement'
+import { verifyOtp } from '../../api/index'
 
 const otp = () => {
   const type = useSelector((state: RootState) => state.type.value)
+  const auth = useSelector((state: RootState) => state.auth.data)
 
   const [otp, setOtp] = useState<string>('1234')
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {}
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    console.log({ ...auth })
+    verifyOtp({ ...auth }).then((res) => console.log(res))
+  }
 
   console.log(otp)
   if (type === 'otp')
