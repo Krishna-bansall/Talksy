@@ -11,16 +11,21 @@ import arrow from '../../public/Images/emojis/arrow.svg'
 import { RootState } from '../../redux/store'
 import LinkElement from '../../components/LinkElement'
 import { verifyOtp } from '../../api/index'
+import { setApiData } from '../../redux/Auth/authDataSlice'
 
 const otp = () => {
   const type = useSelector((state: RootState) => state.type.value)
   const auth = useSelector((state: RootState) => state.auth.data)
 
   const [otp, setOtp] = useState<string>('1234')
+  const dispatch = useDispatch()
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleClick = async (e: React.MouseEvent<HTMLElement>) => {
     console.log({ ...auth.data })
-    verifyOtp({ ...auth.data, otp }).then((res) => console.log(res))
+    const res = await verifyOtp({ ...auth.data, otp })
+    if (res.status === 200) {
+      dispatch(setApiData({ ...res.data, isLoggedIn: true }))
+    }
   }
 
   console.log(otp)

@@ -3,6 +3,7 @@ import { otpService } from "../services/otp-service";
 import { hashService } from "../services/hash-service";
 import { userService } from "../services/user-service";
 import { tokenService } from "../services/token-service";
+import { UserDto } from "../dtos/user-dto";
 
 class AuthController {
 	async sendOtp(req: express.Request, res: express.Response) {
@@ -75,8 +76,8 @@ class AuthController {
 			maxAge: 1000 * 60 * 60 * 24 * 30,
 			httpOnly: true,
 		});
-
-		res.json({ accessToken, user });
+		const userDto = new UserDto(user);
+		res.json({ accessToken, user: userDto });
 	}
 }
 

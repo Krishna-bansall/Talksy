@@ -4,12 +4,24 @@ export interface IAuthDataState {
   data: {
     isLoggedIn: boolean
     data: { phone: string; hash: string }
+    user?: {
+      id: string
+      phone: number
+      activated: boolean
+      createdAt: string
+    }
   }
 }
 const initialState: IAuthDataState = {
   data: {
     isLoggedIn: false,
     data: { phone: 'phone', hash: 'phone' },
+    user: {
+      id: '',
+      phone: 123,
+      activated: false,
+      createdAt: '',
+    },
   },
 }
 
