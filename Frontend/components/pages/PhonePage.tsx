@@ -38,7 +38,7 @@ const PhonePage: React.FC<IProps> = ({
 
     if (res.status === 200) {
       setSelectedState(otp())
-      authApiData(setApiData(res.data))
+      authApiData(setApiData({ data: res.data, isLoggedIn: false }))
       router.push('/auth/otp')
     }
   }

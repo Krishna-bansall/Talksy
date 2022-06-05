@@ -1,12 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface IAuthDataState {
-  isLoggedIn: boolean
-  data: { phone: string; hash: string }
+  data: {
+    isLoggedIn: boolean
+    data: { phone: string; hash: string }
+  }
 }
 const initialState: IAuthDataState = {
-  isLoggedIn: false,
-  data: { phone: 'phone', hash: 'phone' },
+  data: {
+    isLoggedIn: false,
+    data: { phone: 'phone', hash: 'phone' },
+  },
 }
 
 export const authDataSlice = createSlice({

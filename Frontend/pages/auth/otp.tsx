@@ -19,8 +19,8 @@ const otp = () => {
   const [otp, setOtp] = useState<string>('1234')
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    console.log({ ...auth })
-    verifyOtp({ ...auth }).then((res) => console.log(res))
+    console.log({ ...auth.data })
+    verifyOtp({ ...auth.data, otp }).then((res) => console.log(res))
   }
 
   console.log(otp)
@@ -48,6 +48,7 @@ const otp = () => {
                 buttonText="Validate"
                 icon={arrow}
                 route="/auth/otp"
+                disabled={otp.length !== 6}
                 onClick={(e) => handleClick(e)}
               />
             </div>
@@ -55,7 +56,12 @@ const otp = () => {
               Do Not Refresh this Page
               <LinkElement
                 link="/auth/otp"
-                text="Resend Otp"
+                text="Resend OTP"
+                // onClick={() => }
+              />
+              <LinkElement
+                link="/auth/otp"
+                text="Change Your Number"
                 // onClick={() => }
               />
             </p>
