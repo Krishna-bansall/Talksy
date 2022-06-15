@@ -12,10 +12,13 @@ import { RootState } from '../../redux/store'
 import LinkElement from '../../components/LinkElement'
 import { verifyOtp } from '../../api/index'
 import { setApiData } from '../../redux/Auth/authDataSlice'
+import { useRouter } from 'next/router'
 
 const otp = () => {
   const type = useSelector((state: RootState) => state.type.value)
   const auth = useSelector((state: RootState) => state.auth.data)
+
+  const router = useRouter()
 
   const [otp, setOtp] = useState<string>('1234')
   const dispatch = useDispatch()
@@ -25,6 +28,7 @@ const otp = () => {
     const res = await verifyOtp({ ...auth.data, otp })
     if (res.status === 200) {
       dispatch(setApiData({ ...res.data, isLoggedIn: true }))
+      router.push('/activate')
     }
   }
 

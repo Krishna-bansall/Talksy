@@ -3,8 +3,10 @@ import { IApiData } from '../pages/auth/index'
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 console.log(baseUrl)
+
 const authApi = axios.create({
   baseURL: 'http://localhost:5000',
+  withCredentials: true,
   headers: {
     'Content-type': 'application/json',
   },

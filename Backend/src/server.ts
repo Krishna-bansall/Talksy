@@ -2,21 +2,23 @@ import express from "express";
 import { router } from "./routes";
 import * as dotenv from "dotenv";
 import { DbConnect } from "./database";
+import cors from "cors";
 
-var cors = require("cors");
 dotenv.config({
 	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
 });
 
 const app = express();
 
-app.use(cors());
-
 const PORT = process.env.PORT || 5500;
+
 const corsOptions = {
-	origin: "http://localhost:3000/",
+	credentials: true,
+	origin: "http://localhost:3000",
 	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
+app.use(cors(corsOptions));
 
 DbConnect();
 

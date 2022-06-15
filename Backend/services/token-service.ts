@@ -1,5 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
+import refreshModel from "../models/refresh-model";
 dotenv.config({
 	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
 });
@@ -20,6 +21,16 @@ class TokenService {
 		});
 
 		return { accessToken, refreshToken };
+	}
+	async storeRefreshToken(token: string, userId: string) {
+		try {
+			await refreshModel.create({
+				token,
+				userId,
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }
 

@@ -22,8 +22,8 @@ class AuthController {
 		}
 
 		try {
-			await otpService.sendBySms(phone, otp.toString());
-			res.json({ hash: `${hash}_${expires}`, phone });
+			// await otpService.sendBySms(phone, otp.toString());
+			res.json({ hash: `${hash}_${expires}`, phone, otp });
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ message: "Message Sending Failed" });
@@ -71,13 +71,20 @@ class AuthController {
 			_id: await user._id,
 			activated: false,
 		});
+		tokenService.storeRefreshToken(refreshToken, user._id);
 
 		res.cookie("refreshToken", refreshToken, {
 			maxAge: 1000 * 60 * 60 * 24 * 30,
 			httpOnly: true,
 		});
+
+		res.cookie("accessToken", accessToken, {
+			maxAge: 1000 * 60 * 60 * 24 * 30,
+			httpOnly: true,
+		});
+
 		const userDto = new UserDto(user);
-		res.json({ accessToken, user: userDto });
+		res.json({ user: userDto, auth: true });
 	}
 }
 
