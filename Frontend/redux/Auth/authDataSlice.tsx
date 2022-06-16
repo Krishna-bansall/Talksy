@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface IAuthDataState {
   data: {
-    isLoggedIn: boolean
     data: { phone: string; hash: string }
     user?: {
       id: string
@@ -10,11 +9,11 @@ export interface IAuthDataState {
       activated: boolean
       createdAt: string
     }
+    auth: Boolean
   }
 }
 const initialState: IAuthDataState = {
   data: {
-    isLoggedIn: false,
     data: { phone: 'phone', hash: 'phone' },
     user: {
       id: '',
@@ -22,6 +21,7 @@ const initialState: IAuthDataState = {
       activated: false,
       createdAt: '',
     },
+    auth: false,
   },
 }
 

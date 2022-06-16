@@ -13,7 +13,6 @@ import { mailDo, otp, phone } from '../../redux/Auth/typeSlice'
 import { sendOtp } from '../../api'
 import { useRouter } from 'next/router'
 import { setApiData } from '../../redux/Auth/authDataSlice'
-import { useSelector } from 'react-redux'
 
 interface IProps {
   setText: React.Dispatch<React.SetStateAction<string>>
@@ -38,7 +37,7 @@ const PhonePage: React.FC<IProps> = ({
 
     if (res.status === 200) {
       setSelectedState(otp())
-      authApiData(setApiData({ data: res.data, isLoggedIn: false }))
+      authApiData(setApiData({ data: res.data, auth: res.data.auth }))
       router.push('/auth/otp')
     }
   }

@@ -27,12 +27,12 @@ const otp = () => {
     console.log({ ...auth.data })
     const res = await verifyOtp({ ...auth.data, otp })
     if (res.status === 200) {
-      dispatch(setApiData({ ...res.data, isLoggedIn: true }))
+      console.log(res)
+      dispatch(setApiData({ ...res.data }))
       router.push('/activate')
     }
   }
 
-  console.log(otp)
   if (type === 'otp')
     return (
       <div className="w-screen md:w-1/2">
