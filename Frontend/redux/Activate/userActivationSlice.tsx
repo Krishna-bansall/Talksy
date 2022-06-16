@@ -15,8 +15,8 @@ const initialState: IActivationDataState = {
   },
 }
 
-export const authDataSlice = createSlice({
-  name: 'auth',
+export const userActivationSlice = createSlice({
+  name: 'activate',
   initialState,
   reducers: {
     setName: (state: IActivationDataState, action: PayloadAction<string>) => {
@@ -26,6 +26,6 @@ export const authDataSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setName } = authDataSlice.actions
+export const { setName } = userActivationSlice.actions
 
-export default authDataSlice.reducer
+export default userActivationSlice.reducer

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import userActivationSlice from './Activate/userActivationSlice'
 import authDataSlice from './Auth/authDataSlice'
 import { typeSlice } from './Auth/typeSlice'
 
@@ -6,6 +7,7 @@ export const store = configureStore({
   reducer: {
     type: typeSlice.reducer,
     auth: authDataSlice,
+    activate: userActivationSlice,
   },
 })
 

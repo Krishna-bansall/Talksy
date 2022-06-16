@@ -7,15 +7,15 @@ import Input from '../../components/Input'
 import IconButton from '../../components/IconButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
-import arrow from '../../public/Images/emojis/arrow.svg'
-import { setName } from '../../redux/Auth/userActivationSlice'
+import arrow from '../../public/Images/icons/arrow.svg'
+import { setName } from '../../redux/Activate/userActivationSlice'
 import { useRouter } from 'next/router'
 
 const index = () => {
   const [text, setText] = useState('')
 
   const type = useSelector((state: RootState) => state.type.value)
-  const auth = useSelector((state: RootState) => state.auth.data)
+  const activateData = useSelector((state: RootState) => state.activate.data)
 
   const router = useRouter()
   const dispatch = useDispatch()
