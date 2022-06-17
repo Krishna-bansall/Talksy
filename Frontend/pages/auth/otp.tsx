@@ -7,7 +7,7 @@ import IconButton from '../../components/IconButton'
 import Input from '../../components/Input'
 
 import lock from '../../public/Images/emojis/lock.svg'
-import arrow from '../../public/Images/emojis/arrow.svg'
+import arrow from '../../public/Images/icons/arrow.svg'
 import { RootState } from '../../redux/store'
 import LinkElement from '../../components/LinkElement'
 import { verifyOtp } from '../../api/index'

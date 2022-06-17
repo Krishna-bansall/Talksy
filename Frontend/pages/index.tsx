@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { Card } from '../components/CardVariants'
 import wave from '../public/Images/emojis/wave.svg'
-import arrow from '../public/Images/emojis/arrow.svg'
+import arrow from '../public/Images/icons/arrow.svg'
 import IconButton from '../components/IconButton'
 
 const Home: NextPage = () => {

@@ -3,7 +3,7 @@ import { Card } from '../CardVariants'
 import Image from 'next/image'
 import IconButton, { IconButtonVariant } from '../../components/IconButton'
 
-import arrow from '../../public/Images/emojis/arrow.svg'
+import arrow from '../../public/Images/icons/arrow.svg'
 import mailEmoji from '../../public/Images/emojis/mailEmoji.svg'
 import Input from '../Input'
 

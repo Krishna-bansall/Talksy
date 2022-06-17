@@ -4,7 +4,7 @@ import Image from 'next/image'
 import IconButton, { IconButtonVariant } from '../../components/IconButton'
 
 import phoneEmoji from '../../public/Images/emojis/phoneEmoji.svg'
-import arrow from '../../public/Images/emojis/arrow.svg'
+import arrow from '../../public/Images/icons/arrow.svg'
 import Input from '../Input'
 import mobile from '../../public/Images/emojis/mobile.svg'
 import mail from '../../public/Images/emojis/mail.svg'
