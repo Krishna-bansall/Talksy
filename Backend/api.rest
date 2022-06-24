@@ -13,3 +13,12 @@ Content-Type: application/json
     "otp": 320996,
     "hash": "9f27d55dbb958fa5d7138f5ce970918fe4df33916335c226e887ad8ec24ca99a_1654073743621"
 }
+
+POST http://localhost:5000/api/activate HTTP/1.1
+Content-Type: application/json
+
+{
+    "phone": "+917303067935",
+    "otp": 320996,
+    "hash": "9f27d55dbb958fa5d7138f5ce970918fe4df33916335c226e887ad8ec24ca99a_1654073743621"
+}

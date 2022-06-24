@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export interface IActivationDataState {
   data: {
     name: string
-    profilePicture?: File
+    profilePicture?: string
     username: string
   }
 }
@@ -22,10 +22,19 @@ export const userActivationSlice = createSlice({
     setName: (state: IActivationDataState, action: PayloadAction<string>) => {
       state.data.name = action.payload
     },
+    setImage: (state: IActivationDataState, action: PayloadAction<string>) => {
+      state.data.profilePicture = action.payload
+    },
+    setUsername: (
+      state: IActivationDataState,
+      action: PayloadAction<string>
+    ) => {
+      state.data.username = action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setName } = userActivationSlice.actions
+export const { setName, setImage, setUsername } = userActivationSlice.actions
 
 export default userActivationSlice.reducer

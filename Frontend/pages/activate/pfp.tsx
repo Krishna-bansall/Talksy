@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import fs from 'fs'
 
 import { Card } from '../../components/CardVariants'
 import monkeyEmoji from '../../public/Images/emojis/monkeyEmoji.svg'
@@ -11,7 +12,7 @@ import Input from '../../components/Input'
 import IconButton from '../../components/IconButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
-import { setName } from '../../redux/Activate/userActivationSlice'
+import { setImage } from '../../redux/Activate/userActivationSlice'
 import { useRouter } from 'next/router'
 import LinkElement from '../../components/LinkElement'
 
@@ -24,17 +25,42 @@ const pfp = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 
+  // Load Initial Avatar
+  useEffect(() => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', userAvatarDefault.src, true)
+    xhr.responseType = 'blob'
+    xhr.onload = function (e) {
+      console.log(this.response)
+      const reader = new FileReader()
+      reader.onload = function (event) {
+        const res = event?.target!.result
+        console.log(res)
+        setFile(res)
+      }
+      const file = this.response
+      reader.readAsDataURL(file)
+    }
+    xhr.send()
+  }, [])
+
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // dispatch(setName(text))
     // setFile(e.target.files![0].stream)
     const reader = new FileReader()
+    console.log(e.target.files![0])
     reader.readAsDataURL(e.target.files![0])
+
     reader.onloadend = () => {
       console.log(reader.result)
       setFile(reader.result)
     }
 
     router.push('/activate/pfp')
+  }
+
+  const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    dispatch(setImage(file))
+    router.push('/activate/username')
   }
 
   // if (auth.auth)
@@ -56,12 +82,13 @@ const pfp = () => {
           </div>
 
           <div className="my-4 flex justify-center">
-            <div className=" rounded-full bg-gradient-to-br from-purpleCustom to-pinkCustom ">
+            <div className="w-1/4 items-center justify-center rounded-full bg-gradient-to-br from-purpleCustom to-pinkCustom ">
               <Image
-                className="rounded-full"
+                className=" rounded-full"
                 src={file}
-                height={100}
-                width={100}
+                layout="responsive"
+                height={90}
+                width={90}
               />
             </div>
           </div>
@@ -69,6 +96,7 @@ const pfp = () => {
             <div className="flex justify-center">
               <input
                 type="file"
+                accept="image/*"
                 className="invisible absolute"
                 onChange={(e) => handleChange(e)}
                 id="pfpInput"
@@ -85,12 +113,7 @@ const pfp = () => {
           </form>
 
           <div className="my-4 flex justify-center ">
-            <IconButton
-              buttonText="Next"
-              icon={arrow}
-              // route={selectedState === 'otp' ? '/auth/otp' : ''}
-              //   onClick={(e) => handleClick(e)}
-            />
+            <IconButton buttonText="Next" icon={arrow} onClick={handleClick} />
           </div>
         </Card>
       </div>

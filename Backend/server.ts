@@ -1,9 +1,9 @@
 import express from "express";
-import { router } from "./routes";
+import { router } from "./src/routes";
 import * as dotenv from "dotenv";
-import { DbConnect } from "./database";
+import { DbConnect } from "./src/database";
 import cors from "cors";
-
+import cookieParser from "cookie-parser";
 dotenv.config({
 	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
 });
@@ -22,7 +22,8 @@ app.use(cors(corsOptions));
 
 DbConnect();
 
-app.use(express.json());
+app.use(cookieParser());
+app.use(express.json({ limit: "8mb" }));
 app.use(router);
 
 app.get("/", (req, res) => {

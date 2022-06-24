@@ -32,6 +32,9 @@ class TokenService {
 			console.log(error);
 		}
 	}
+	async verifyAccessToken(token: string) {
+		return jwt.verify(token, accessTokenSecret as string);
+	}
 }
 
 export const tokenService = new TokenService();

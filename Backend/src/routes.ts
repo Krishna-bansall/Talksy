@@ -1,10 +1,11 @@
 import { Router } from "express";
+import { activateController } from "../controllers/activate-controller";
 import { authController } from "../controllers/auth-controller";
+import { authMiddleware } from "../middleware/auth-middleware";
 
 export const router = Router();
 
-router.post("/api/send-otp", authController.sendOtp);
-router.post("/api/verify-otp", authController.verifyOtp);
+// Home Get Route:
 router.get("/", (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -15,3 +16,10 @@ router.get("/", (req, res) => {
 		"PUT, POST, GET, DELETE, PATCH, OPTIONS"
 	);
 });
+
+// Auth Api Routes
+router.post("/api/send-otp", authController.sendOtp);
+router.post("/api/verify-otp", authController.verifyOtp);
+
+//Activate Api Routes
+router.post("/api/activate", authMiddleware, activateController.activate);

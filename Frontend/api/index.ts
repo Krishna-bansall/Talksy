@@ -19,5 +19,8 @@ export const sendOtp = async (data: IApiData) => {
 export const verifyOtp = async (data: any) => {
   return await authApi.post('/api/verify-otp', data)
 }
+export const activate = async (data: any) => {
+  return await authApi.post('/api/activate', data)
+}
 
 export default authApi
