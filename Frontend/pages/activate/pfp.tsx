@@ -15,6 +15,8 @@ import { RootState } from '../../redux/store'
 import { setImage } from '../../redux/Activate/userActivationSlice'
 import { useRouter } from 'next/router'
 import LinkElement from '../../components/LinkElement'
+import { Toaster } from 'react-hot-toast'
+import { errorLoginToast } from '../../components/NotificationToasts'
 
 const pfp = () => {
   const [file, setFile] = useState(userAvatarDefault)
@@ -47,6 +49,10 @@ const pfp = () => {
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader()
     console.log(e.target.files![0])
+    if (e.target.files![0].size > 1048576 * 4) {
+      errorLoginToast('Image Size Greater than 4MB')
+      return
+    }
     reader.readAsDataURL(e.target.files![0])
 
     reader.onloadend = () => {
@@ -66,6 +72,7 @@ const pfp = () => {
   return (
     <div className="flex w-full flex-col md:w-1/2">
       <div className="w-full">
+        <Toaster />
         <Card>
           <div className="my-4 flex justify-center ">
             <Image src={monkeyEmoji} />
