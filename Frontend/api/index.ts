@@ -20,7 +20,12 @@ export const verifyOtp = async (data: any) => {
   return await authApi.post('/api/verify-otp', data)
 }
 export const activate = async (data: any) => {
-  return await authApi.post('/api/activate', data)
+  try {
+    return await authApi.post('/api/activate', data)
+  } catch (err) {
+    throw err
+  }
+  // return authApi.post('/api/activate', data).then((res) => res)
 }
 
 export default authApi

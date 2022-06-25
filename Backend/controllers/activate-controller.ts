@@ -6,14 +6,18 @@ class ActivateController {
 	async activate(req: express.Request, res: express.Response) {
 		const { name, profilePicture, username } = req.body;
 
-		console.log(name, profilePicture, username);
+		console.log(profilePicture);
 
 		if (!name || !profilePicture || !username) {
 			res.status(400).json({ message: "All Fields Are Required" });
 		}
+		console.log(typeof profilePicture);
 
 		const buffer = Buffer.from(
-			(profilePicture as string).replace(/^data:image\/png;base64,/, ""),
+			(profilePicture as string).replace(
+				/^data:image\/(png|jpg|svg\+xml);base64,/,
+				""
+			),
 			"base64"
 		);
 
@@ -27,7 +31,7 @@ class ActivateController {
 			res.status(500).json({ message: "Could Not process the Image" });
 		}
 
-		console.log(req);
+		// console.log(req);
 
 		// userService.findUser({ _id: req.user });
 

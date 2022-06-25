@@ -35,8 +35,8 @@ const pfp = () => {
       const reader = new FileReader()
       reader.onload = function (event) {
         const res = event?.target!.result
-        console.log(res)
-        setFile(res)
+        console.log(reader.result)
+        setFile(reader.result)
       }
       const file = this.response
       reader.readAsDataURL(file)
@@ -45,13 +45,12 @@ const pfp = () => {
   }, [])
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setFile(e.target.files![0].stream)
     const reader = new FileReader()
     console.log(e.target.files![0])
     reader.readAsDataURL(e.target.files![0])
 
     reader.onloadend = () => {
-      console.log(reader.result)
+      console.log(typeof reader.result)
       setFile(reader.result)
     }
 
