@@ -3,7 +3,12 @@ import mongoose, { Schema } from "mongoose";
 const refreshToken = new Schema(
 	{
 		token: { type: String, required: true },
-		uid: { type: Schema.Types.ObjectId, ref: "User" },
+		uid: {
+			type: Schema.Types.ObjectId,
+			unique: true,
+			ref: "User",
+			dropDups: true,
+		},
 	},
 	{
 		timestamps: true,

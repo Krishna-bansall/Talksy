@@ -12,8 +12,10 @@ export const DbConnect = () => {
 	mongoose.connect(
 		DB_URL as string,
 		{
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
+			// useNewUrlParser: true,
+			// useUnifiedTopology: true,
+			// useCreateIndex: true, //make this true
+			// autoIndex: true, //make this also true
 		} as ConnectOptions
 	);
 	const db = mongoose.connection;

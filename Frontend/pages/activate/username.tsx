@@ -39,16 +39,17 @@ const index = () => {
     // activate(activateData).then((res) => console.log(res))
     try {
       setApiRes(await activate(activateData))
+      console.log(apiRes)
     } catch (error) {
       if (error) setApiError(error as AxiosError<any, any>)
-      // console.log(error as AxiosError<any, any>)
+      console.log(error)
     }
   }
 
   useEffect(() => {
     console.log()
-    if (apiError?.response?.status === 401) {
-      errorLoginToast('Login Expired')
+    if (apiError?.response?.status! >= 400) {
+      errorLoginToast(apiError?.response?.data.message)
     } else if (apiError) errorLoginToast('Something Went Wrong')
 
     // errorLoginToast(apiRes as .message)

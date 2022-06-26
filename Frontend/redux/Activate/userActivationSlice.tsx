@@ -11,7 +11,7 @@ const initialState: IActivationDataState = {
   data: {
     name: 'name',
     //  profilePicture:
-    username: 'username',
+    username: 'kris1',
   },
 }
 
