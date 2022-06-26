@@ -63,10 +63,6 @@ class AuthController {
 			res.status(500).json({ message: "DB Error" });
 		}
 
-		console.log(1);
-		console.log(user);
-		console.log(2);
-
 		const { accessToken, refreshToken } = tokenService.generateTokens({
 			_id: await user._id,
 			activated: false,

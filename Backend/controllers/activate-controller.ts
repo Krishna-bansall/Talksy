@@ -19,12 +19,14 @@ class ActivateController {
 		const imagePath = `${Date.now()}-${Math.round(Math.random() * 1)}.png`;
 		// );
 		if (
-			(profilePicture as string).slice(
+			(profilePicture as string)?.slice(
 				profilePicture.indexOf(",") + 1,
 				(profilePicture as string).length
 			) === userDefault
 		) {
-			console.log(true);
+			// console.log(true);
+			isDefault = true;
+		} else if (!profilePicture) {
 			isDefault = true;
 		} else {
 			console.log(false);
@@ -61,10 +63,12 @@ class ActivateController {
 				return;
 			}
 
-			// console.log((await userService.findUser({ user: username })).activated);
+			console.log(
+				"\n userdata   " + (await userService.findUser({ username: username }))
+			);
 			// Set User
-			if ((await userService.findUser({ user: username })).activated) {
-				res.status(404).json({ message: "Username Already Taken" });
+			if (await userService.findUser({ username: username })) {
+				res.status(400).json({ message: "Username Already Taken" });
 				return;
 			} else {
 				user.username = username;
@@ -72,15 +76,15 @@ class ActivateController {
 			user.name = name;
 			user.activated = true;
 			user.avatar = `${
-				isDefault
-					? path.resolve(__dirname, `../storage/userDefault.svg`)
-					: `../storage/${imagePath}`
+				isDefault ? `../storage/userDefault.svg` : `/storage/${imagePath}`
 			}`;
 			user.save();
-			res.json({ user: new UserDto(user) });
+			res.json({ user: new UserDto(user), auth: true });
 			return;
 		} catch (error: any) {
 			res.status(500).json({ message: "Database just fucked up" });
+			console.log(error);
+
 			return;
 		}
 	}

@@ -30,21 +30,9 @@ const index = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 
-  const handleClick = async (e: React.MouseEvent<HTMLElement>) => {
+  useEffect(() => {
     dispatch(setUsername(text))
-    router.push('/activate/pfp')
-  }
-
-  const handleApiClick = async (e: any) => {
-    // activate(activateData).then((res) => console.log(res))
-    try {
-      setApiRes(await activate(activateData))
-      console.log(apiRes)
-    } catch (error) {
-      if (error) setApiError(error as AxiosError<any, any>)
-      console.log(error)
-    }
-  }
+  }, [text])
 
   useEffect(() => {
     console.log()
@@ -52,11 +40,25 @@ const index = () => {
       errorLoginToast(apiError?.response?.data.message)
     } else if (apiError) errorLoginToast('Something Went Wrong')
 
-    // errorLoginToast(apiRes as .message)
-    // return () => {
-    //   second
-    // }
+    return setApiError(undefined)
   }, [apiRes, apiError])
+
+  console.log(text)
+
+  const handleApiClick = async (e: any) => {
+    try {
+      const res = await activate(activateData)
+      setApiRes(res)
+      console.log(res)
+
+      if (res!.status >= 200 && res!.status <= 300) {
+        // router.push('/activate/success')
+      }
+    } catch (error) {
+      if (error) setApiError(error as AxiosError<any, any>)
+      console.log(error)
+    }
+  }
 
   // if (auth.auth)
   return (
@@ -87,12 +89,6 @@ const index = () => {
             <IconButton
               buttonText="Next"
               disabled={text.length < 3}
-              icon={arrow}
-              // route={selectedState === 'otp' ? '/auth/otp' : ''}
-              onClick={(e) => handleClick(e)}
-            />
-            <IconButton
-              buttonText="check api out"
               icon={arrow}
               // route={selectedState === 'otp' ? '/auth/otp' : ''}
               onClick={(e) => handleApiClick(e)}

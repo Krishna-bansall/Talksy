@@ -19,11 +19,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+app.use('/storage', express.static('storage'))
 DbConnect();
 
 app.use(cookieParser());
-app.use(express.json({ limit: "8mb" }));
+app.use(express.json({ limit: "4mb" }));
 app.use(router);
 
 app.get("/", (req, res) => {

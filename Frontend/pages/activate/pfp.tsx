@@ -49,7 +49,7 @@ const pfp = () => {
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader()
     console.log(e.target.files![0])
-    if (e.target.files![0].size > 1048576 * 4) {
+    if (e.target.files![0]?.size > 1048576 * 4) {
       errorLoginToast('Image Size Greater than 4MB')
       return
     }
