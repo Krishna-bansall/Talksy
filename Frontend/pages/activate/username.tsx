@@ -17,6 +17,7 @@ import { AxiosError, AxiosResponse } from 'axios'
 
 import toast, { Toaster } from 'react-hot-toast'
 import { errorLoginToast } from '../../components/NotificationToasts'
+import { setApiData } from '../../redux/Auth/authDataSlice'
 
 const index = () => {
   const [text, setText] = useState('')
@@ -35,15 +36,12 @@ const index = () => {
   }, [text])
 
   useEffect(() => {
-    console.log()
     if (apiError?.response?.status! >= 400) {
       errorLoginToast(apiError?.response?.data.message)
     } else if (apiError) errorLoginToast('Something Went Wrong')
 
     return setApiError(undefined)
   }, [apiRes, apiError])
-
-  console.log(text)
 
   const handleApiClick = async (e: any) => {
     try {
@@ -52,6 +50,9 @@ const index = () => {
       console.log(res)
 
       if (res!.status >= 200 && res!.status <= 300) {
+        if (res.data.auth) {
+          dispatch(setApiData({ auth: true, user: res.data.user }))
+        }
         // router.push('/activate/success')
       }
     } catch (error) {

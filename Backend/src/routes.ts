@@ -20,6 +20,7 @@ router.get("/", (req, res) => {
 // Auth Api Routes
 router.post("/api/send-otp", authController.sendOtp);
 router.post("/api/verify-otp", authController.verifyOtp);
+router.post("/api/refresh", authMiddleware, authController.refresh);
 
 //Activate Api Routes
 router.post("/api/activate", authMiddleware, activateController.activate);

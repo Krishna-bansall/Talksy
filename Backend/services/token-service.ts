@@ -35,6 +35,16 @@ class TokenService {
 	async verifyAccessToken(token: string) {
 		return jwt.verify(token, accessTokenSecret as string);
 	}
+	async verifyRefreshToken(token: string) {
+		return jwt.verify(token, refreshTokenSecret as string);
+	}
+	async findRefreshToken(token: string, userId: string) {
+		try {
+			await refreshModel.findOne({ token, _id: userId });
+		} catch (error) {
+			console.log(error);
+		}
+	}
 }
 
 export const tokenService = new TokenService();

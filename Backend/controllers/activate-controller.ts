@@ -36,7 +36,7 @@ class ActivateController {
 			}
 			const buffer = Buffer.from(
 				(profilePicture as string).replace(
-					/^data:image\/(png|jpg|svg\+xml);base64,/,
+					/^data:image\/(png|jpg|jpeg|svg\+xml);base64,/,
 					""
 				),
 				"base64"
@@ -82,7 +82,7 @@ class ActivateController {
 			res.json({ user: new UserDto(user), auth: true });
 			return;
 		} catch (error: any) {
-			res.status(500).json({ message: "Database just fucked up" });
+			res.status(500).json({ message: "Database just messed up" });
 			console.log(error);
 
 			return;
