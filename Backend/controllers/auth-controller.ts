@@ -22,7 +22,7 @@ class AuthController {
 		}
 
 		try {
-			// await otpService.sendBySms(phone, otp.toString());
+			await otpService.sendBySms(phone, otp.toString());
 			res.json({ hash: `${hash}_${expires}`, phone, otp });
 		} catch (error) {
 			console.log(error);
@@ -81,6 +81,35 @@ class AuthController {
 
 		const userDto = new UserDto(user);
 		res.json({ user: userDto, auth: true });
+	}
+	async refresh(req: express.Request, res: express.Response) {
+		const { refreshToken: refreshTokenFromCookies } = req.cookies;
+		let userData;
+
+		try {
+			userData = await tokenService.verifyRefreshToken(refreshTokenFromCookies);
+		} catch (error) {
+			console.log(error);
+			return res.status(401).json({ message: "Invalid Token" });
+		}
+
+		try {
+			const token = await tokenService.findRefreshToken(
+				refreshTokenFromCookies,
+				(userData as any)._id
+			);
+			if (token === undefined) {
+				return res.status(401).json({ message: "Invalid Token" });
+			}
+		} catch (error) {
+			return res.status(500).json({ message: "Internal Error" });
+		}
+
+		// Check If User Valid
+
+		try {
+			const token = await userService.findUser({ _id: (userData as any)._id });
+		} catch (error) {}
 	}
 }
 

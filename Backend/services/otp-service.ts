@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 import { hashService } from "./hash-service";
 
 dotenv.config({
-	path: "/home/thechosenguy/Desktop/codes/Talksy/Backend/" + "/.env",
+	path: "/home/thechosenguy/Desktop/files/codes/Talksy/Backend/" + "/.env",
 });
 const smsSid = process.env.SMS_SID;
 const smsAuthToken = process.env.SMS_AUTH_TOKEN;
