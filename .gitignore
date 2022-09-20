@@ -1,1 +1,5 @@
 .history/
+./Backend/.env
+./Backend/.history
+./Frontend/.env
+./Frontend/.history
